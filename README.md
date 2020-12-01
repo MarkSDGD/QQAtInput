@@ -1,4 +1,5 @@
 # QQAtInput
+[![](https://jitpack.io/v/MarkSDGD/QQAtInput.svg)](https://jitpack.io/#MarkSDGD/QQAtInput)
 
 ## 仿QQ at 功能
 
@@ -53,7 +54,7 @@
 
 
 ## 导入方式
-### [![](https://jitpack.io/v/MarkSDGD/QQAtInput.svg)](https://jitpack.io/#MarkSDGD/QQAtInput)项目根目录下build.gradle文件添加JitPack
+### 项目根目录下build.gradle文件添加JitPack
 ```
 allprojects {
     repositories {
