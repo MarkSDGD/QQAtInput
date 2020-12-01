@@ -1,0 +1,3 @@
+include ':atlibrary'
+include ':app'
+rootProject.name = "CustomAtFriends"
