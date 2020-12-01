@@ -42,9 +42,7 @@ allprojects {
 ```
 
 ###  app目录下build.gradle文件添加依赖项
-[![](https://jitpack.io/v/MarkSDGD/QQAtInput.svg)](https://jitpack.io/#MarkSDGD/QQAtInput)
-
-仅支持`AndroidX`
+仅支持`AndroidX` [![](https://jitpack.io/v/MarkSDGD/QQAtInput.svg)](https://jitpack.io/#MarkSDGD/QQAtInput)
 ```
 dependencies {
     implementation 'com.github.MarkSDGD:QQAtInput:1.0.0'
