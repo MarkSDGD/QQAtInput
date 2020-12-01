@@ -1,12 +1,14 @@
-# 仿QQ at 功能
+# QQAtInput
 
-今年项目中增加了即时通讯功能，在开发之余，封装了一个仿QQ at 功能组件。可以用在聊天，评论等模块中。该组件主要解决两个难点问题:
-1. @选取的成员作为一个整体，不可编辑，支持整体删除；
-2. 支持spannable类型存储，@内容可以保存草稿以及恢复草稿功能；
+## 仿QQ at 功能
 
-如果觉得对你有帮助的话，请帮忙star一下！
+今年项目中增加了即时通讯功能，在开发之余，封装了一个仿QQ at 功能组件。可以用在聊天，评论等模块中。该组件主要解决两个**难点问题**:
+`1. @选取的成员作为一个整体，不可编辑，支持整体删除；`
+`2. 支持spannable类型存储，@内容可以保存草稿以及恢复草稿功能；`
 
-# 现有功能
+如果觉得对你有帮助的话，请帮忙 **star** 一下！
+
+## 现有功能
 
 1.@选取的成员作为一个整体，不可编辑，支持整体删除；
 
@@ -26,10 +28,29 @@
 
 9.demo 可以控制键盘显示与隐藏
 
-具体使用方式可以参考demo.
+组件基于`AndroidX`，非`AndroidX`项目可以下载源码修改，具体api使用方式参考demo.
 
+## 导入方式
+### 将JitPack存储库添加到您的构建文件中(项目根目录下build.gradle文件)
+```
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
 
-# demo apk下载
+### 添加依赖项
+[![](https://jitpack.io/v/MarkSDGD/QQAtInput.svg)](https://jitpack.io/#MarkSDGD/QQAtInput)
+仅支持`AndroidX`
+```
+dependencies {
+    implementation 'com.github.MarkSDGD:QQAtInput:1.0.0'
+}
+```
+
+## demo apk下载
 
 [[点击下载体验](https://raw.githubusercontent.com/MarkSDGD/repositoryResources/main/QQAtInput/QQAtInput.apk)]
 
@@ -38,20 +59,20 @@
 ![](https://raw.githubusercontent.com/MarkSDGD/repositoryResources/main/QQAtInput/download_qrcode.png)
 
 
-# 演示截图
+## 演示截图
 
-## 输入文本以及获取对应成员id
+### 输入文本以及获取对应成员id
 ![](https://raw.githubusercontent.com/MarkSDGD/repositoryResources/main/QQAtInput/inputAndMemberId.png)
 
-## 成员选择
+### 成员选择
 ![](https://raw.githubusercontent.com/MarkSDGD/repositoryResources/main/QQAtInput/memberSelect.png)
 
 
-# 录屏gif
+## 录屏gif
 
-## 操作视频录屏
+### 操作视频录屏
 ![](https://raw.githubusercontent.com/MarkSDGD/repositoryResources/main/QQAtInput/QQAtInputVideo.gif)
 
 
-# 声明
+## 声明
 此组件属于个人开发作品，目前已满足大部分使用场景，如有个别场景，请下载源码自行更改。
