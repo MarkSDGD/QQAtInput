@@ -34,7 +34,7 @@
 
 扫码下载体验：
 
-![](https://raw.githubusercontent.com/chaychan/TouTiaoPics/master/screenshot/apk_qrcode.png)
+![](https://raw.githubusercontent.com/MarkSDGD/repositoryResources/main/QQAtInput/download_qrcode.png)
 
 
 # 演示截图
@@ -46,10 +46,10 @@
 ![](https://raw.githubusercontent.com/MarkSDGD/repositoryResources/main/QQAtInput/memberSelect.png)
 
 
-# 录屏
+# 录屏gif
 
 ## 操作视频录屏
-![](https://raw.githubusercontent.com/MarkSDGD/repositoryResources/main/QQAtInput/QQAtInputVideo.mp4)
+![](https://raw.githubusercontent.com/MarkSDGD/repositoryResources/main/QQAtInput/QQAtInputVideo.gif)
 
 
 # 声明
