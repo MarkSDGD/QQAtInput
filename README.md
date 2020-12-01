@@ -28,6 +28,29 @@
 具体使用方式可以参考demo.
 
 
+# Apk下载地址
+
+[[点击下载体验](https://raw.githubusercontent.com/MarkSDGD/repositoryResources/main/QQAtInput/QQAtInput.apk)]
+
+扫码下载体验：
+
+![](https://raw.githubusercontent.com/chaychan/TouTiaoPics/master/screenshot/apk_qrcode.png)
+
+
+# 演示截图
+
+## 输入文本以及获取对应成员id
+![](https://raw.githubusercontent.com/MarkSDGD/repositoryResources/main/QQAtInput/inputAndMemberId.png)
+
+## 成员选择
+![](https://raw.githubusercontent.com/MarkSDGD/repositoryResources/main/QQAtInput/memberSelect.png)
+
+
+# 录屏
+
+## 操作视频录屏
+![](https://raw.githubusercontent.com/MarkSDGD/repositoryResources/main/QQAtInput/QQAtInputVideo.mp4)
+
 
 # 声明
 此组件属于个人开发作品，目前已满足大部分使用场景，如有个别场景，请下载源码自行更改。
