@@ -53,7 +53,7 @@
 
 
 ## 导入方式
-### 项目根目录下build.gradle文件添加JitPack[![](https://jitpack.io/v/MarkSDGD/QQAtInput.svg)](https://jitpack.io/#MarkSDGD/QQAtInput)
+### [![](https://jitpack.io/v/MarkSDGD/QQAtInput.svg)](https://jitpack.io/#MarkSDGD/QQAtInput)项目根目录下build.gradle文件添加JitPack
 ```
 allprojects {
     repositories {
@@ -89,6 +89,7 @@ dependencies {
 ###  api说明
 ####  @模式设置获取
 ```
+
      public void setOnlySupportLastAt(boolean onlySupportLastAt)
 
      public boolean isOnlySupportLastAt()
@@ -96,18 +97,21 @@ dependencies {
 ```
 ####  添加一个@块
 ```
+
      public void addSpan(String showText, int spanBgResId, int textColor, String userId)
 
 ```
 
 ####  获取输入文本中所有成员的id
 ```
+
      public String getUserIdString()
 
 ```
 
 ####  存草稿恢复草稿相关方法
 ```
+
      public String spannableString2JsonString(SpannableString ss)
 
      public SpannableString jsonString2SpannableString(String strjson)
@@ -116,7 +120,7 @@ dependencies {
 
 ## 实现原理
 
-1. 首先将 **@李白** 字符串生成图片，在文本中插入图片span，每个图片span存储用户文本，id等信息；根据@模式，计算插入图片span后的贯标位置；
+1. 首先将 **@李白** 字符串生成图片，在文本中插入图片span，每个图片span存储用户文本，id等信息；根据@模式，计算插入图片span后的光标位置；
 
 2. 由于复杂文本无法直接存储，首先将复杂文本转换成整个普通文本+所有span块关键信息（普通文本中的起始位置，span块文字，id, 背景资源，文字颜色），然后将这些信息转换成json对象，再把json对象转成字符串即可。
 
