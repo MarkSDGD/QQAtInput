@@ -31,7 +31,7 @@
 组件基于`AndroidX`，非`AndroidX`项目可以下载源码修改，具体api使用方式参考demo.
 
 ## 导入方式
-### 将JitPack存储库添加到您的构建文件中(项目根目录下build.gradle文件)
+### 项目根目录下build.gradle文件添加JitPack
 ```
 allprojects {
     repositories {
@@ -41,8 +41,9 @@ allprojects {
 }
 ```
 
-### 添加依赖项
+###  app目录下build.gradle文件添加依赖项
 [![](https://jitpack.io/v/MarkSDGD/QQAtInput.svg)](https://jitpack.io/#MarkSDGD/QQAtInput)
+
 仅支持`AndroidX`
 ```
 dependencies {
