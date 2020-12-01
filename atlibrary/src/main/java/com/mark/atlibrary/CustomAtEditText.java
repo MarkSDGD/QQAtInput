@@ -91,12 +91,12 @@ public class CustomAtEditText extends AppCompatAutoCompleteTextView {
 
 
     /**
-     * Add span.
+     * 添加一个span块.
      *
-     * @param showText    the show text
-     * @param spanBgResId the span bg res id
-     * @param textColor   the text color
-     * @param userId      the user id
+     * @param showText    生成span块的文字
+     * @param spanBgResId span块的背景
+     * @param textColor   span块文字颜色
+     * @param userId      span块对应的成员id
      */
     public void addSpan(String showText, int spanBgResId, int textColor, String userId) {
         if(isOnlySupportLastAt){
@@ -183,10 +183,16 @@ public class CustomAtEditText extends AppCompatAutoCompleteTextView {
         isRestoreFromDraft = restoreFromDraft;
     }
 
+    /** 获取@模式
+     * @return
+     */
     public boolean isOnlySupportLastAt() {
         return isOnlySupportLastAt;
     }
 
+    /** 设置@模式
+     * @param onlySupportLastAt  true 最后输入@有效；false,任何位置输入@有效
+     */
     public void setOnlySupportLastAt(boolean onlySupportLastAt) {
         isOnlySupportLastAt = onlySupportLastAt;
     }
@@ -322,11 +328,10 @@ public class CustomAtEditText extends AppCompatAutoCompleteTextView {
 
 
     /**
-     * Gets user id string.
+     * 获取输入文本中所有成员的id.
      *
      * @return the user id string
      */
-
     public String getUserIdString() {
         MyImageSpan[] spans = getText().getSpans(0, getText().length(), MyImageSpan.class);
         StringBuilder builder = new StringBuilder();

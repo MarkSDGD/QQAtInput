@@ -28,8 +28,6 @@
 
 9.demo 可以控制键盘显示与隐藏
 
-组件基于`AndroidX`，非`AndroidX`项目可以下载源码修改，具体api使用方式参考demo.
-
 ## 导入方式
 ### 项目根目录下build.gradle文件添加JitPack
 ```
@@ -47,6 +45,40 @@ allprojects {
 dependencies {
     implementation 'com.github.MarkSDGD:QQAtInput:1.0.0'
 }
+```
+
+###  使用方式
+```
+<com.mark.atlibrary.CustomAtEditText
+        android:layout_marginTop="30dp"
+        android:id="@+id/chat_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_corner_edittext_bg"
+        android:maxLines="6"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:text=""
+        android:hint="请输入消息"
+        android:textSize="16dp" />
+```
+
+###  api说明
+####  @模式设置获取
+```  public void setOnlySupportLastAt(boolean onlySupportLastAt)
+     public boolean isOnlySupportLastAt()
+```
+####  添加一个@块
+```  public void addSpan(String showText, int spanBgResId, int textColor, String userId)
+```
+
+####  获取输入文本中所有成员的id
+```  public String getUserIdString()
+```
+
+####  存草稿恢复草稿相关方法
+```  public String spannableString2JsonString(SpannableString ss)
+     public SpannableString jsonString2SpannableString(String strjson)
 ```
 
 ## demo apk下载
@@ -72,6 +104,17 @@ dependencies {
 ### 操作视频录屏
 ![](https://raw.githubusercontent.com/MarkSDGD/repositoryResources/main/QQAtInput/QQAtInputVideo.gif)
 
+## 实现原理
+
+1.首先将**@李白 **字符串生成图片，在文本中插入图片span，每个图片span存储用户文本，id等信息；根据@模式，计算插入图片span后的贯标位置；
+
+2.由于复杂文本无法直接存储，首先将复杂文本转换成整个普通文本+所有span块关键信息（普通文本中的起始位置，span块文字，id, 背景资源，文字颜色），然后将这些信息转换成json对象，再把json对象转成字符串即可。
+
+3.恢复草稿的时候，进行相反的操作，根据存储的整个文本，加上所有span块的关键信息，重新构建图片span块插入到文本中即可
 
 ## 声明
+
 此组件属于个人开发作品，目前已满足大部分使用场景，如有个别场景，请下载源码自行更改。
+
+## 支持与鼓励
+![](https://raw.githubusercontent.com/MarkSDGD/repositoryResources/main/QQAtInput/donate.png)
