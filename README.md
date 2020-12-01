@@ -1,4 +1,9 @@
 # QQAtInput
+
+[![](https://jitpack.io/v/MarkSDGD/QQAtInput.svg)](https://jitpack.io/#MarkSDGD/QQAtInput)
+
+[![](https://jitpack.io/v/CymChad/BaseRecyclerViewAdapterHelper.svg)](https://jitpack.io/#CymChad/BaseRecyclerViewAdapterHelper)
+
 [![](https://jitpack.io/v/MarkSDGD/QQAtInput.svg)](https://jitpack.io/#MarkSDGD/QQAtInput)
 
 ## 仿QQ at 功能
