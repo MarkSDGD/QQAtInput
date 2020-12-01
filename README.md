@@ -3,6 +3,7 @@
 今年项目中增加了即时通讯功能，在开发之余，封装了一个仿QQ at 功能组件。可以用在聊天，评论等模块中。该组件主要解决两个难点问题:
 1. @选取的成员作为一个整体，不可编辑，支持整体删除；
 2. 支持spannable类型存储，@内容可以保存草稿以及恢复草稿功能；
+
 如果觉得对你有帮助的话，请帮忙star一下！
 
 # 现有功能
@@ -28,7 +29,7 @@
 具体使用方式可以参考demo.
 
 
-# Apk下载地址
+# demo apk下载
 
 [[点击下载体验](https://raw.githubusercontent.com/MarkSDGD/repositoryResources/main/QQAtInput/QQAtInput.apk)]
 
