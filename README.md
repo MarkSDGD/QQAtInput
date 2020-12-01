@@ -1,7 +1,5 @@
 # QQAtInput
 
-[![](https://jitpack.io/v/MarkSDGD/QQAtInput.svg)](https://jitpack.io/#MarkSDGD/QQAtInput)
-
 ## 仿QQ at 功能
 
 今年项目中增加了即时通讯功能，在开发之余，封装了一个仿QQ at 功能组件。可以用在聊天，评论等模块中。该组件主要解决两个**难点问题**:
