@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.mark.atlibrary.CustomAtEditText;
 import com.mark.atlibrary.listener.InputAtListener;
 import com.mark.customatfriends.bean.Member;
-import com.mark.customatfriends.listener.SelectMemberListener;
+import com.mark.atlibrary.listener.SelectMemberListener;
 import com.mark.customatfriends.utils.PreferenceUtils;
 import com.mark.customatfriends.widget.SelectMemberPopupWindow;
 
