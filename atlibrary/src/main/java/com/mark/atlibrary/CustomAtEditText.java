@@ -21,6 +21,7 @@ import android.widget.TextView;
 import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 
 import com.mark.atlibrary.listener.InputAtListener;
+import com.mark.atlibrary.listener.InputTextListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,19 +34,21 @@ import org.json.JSONObject;
  * description: CustomAtEditText.java
  */
 public class CustomAtEditText extends AppCompatAutoCompleteTextView {
-    public static final int DEFAULT_BG =0;
-    public static final int DEFAULT_TEXT_COLOR=0;
+    public static final int DEFAULT_BG = 0;
+    public static final int DEFAULT_TEXT_COLOR = 0;
     private InputAtListener inputAtListener;
-    private boolean isRestoreFromDraft =false;
+    private InputTextListener inputTextListener;
+    private boolean isRestoreFromDraft = false;
 
-    private boolean isOnlySupportLastAt =false;
+    private boolean isOnlySupportLastAt = false;
+
     /**
      * Instantiates a new Custom at edit text.
      *
      * @param context the context
      */
     public CustomAtEditText(Context context) {
-        this(context,null);
+        this(context, null);
     }
 
 
@@ -56,7 +59,7 @@ public class CustomAtEditText extends AppCompatAutoCompleteTextView {
      * @param attrs   the attrs
      */
     public CustomAtEditText(Context context, AttributeSet attrs) {
-        this(context, attrs,0);
+        this(context, attrs, 0);
     }
 
     /**
@@ -99,27 +102,27 @@ public class CustomAtEditText extends AppCompatAutoCompleteTextView {
      * @param userId      span块对应的成员id
      */
     public void addSpan(String showText, int spanBgResId, int textColor, String userId) {
-        if(isOnlySupportLastAt){
+        if (isOnlySupportLastAt) {
             getText().append(showText);
             SpannableString spannableString = new SpannableString(getText());
-            generateSpan(spannableString, spannableString.length() - showText.length(), spannableString.length(), showText,spanBgResId,textColor, userId);
+            generateSpan(spannableString, spannableString.length() - showText.length(), spannableString.length(), showText, spanBgResId, textColor, userId);
             setText(spannableString);
             setSelection(spannableString.length());
-        }else{
-            int insertPos=getSelectionStart();
-            getText().insert(getSelectionStart(),showText);
+        } else {
+            int insertPos = getSelectionStart();
+            getText().insert(getSelectionStart(), showText);
             SpannableString spannableString = new SpannableString(getText());
-            generateSpan(spannableString, getSelectionStart()- showText.length(), getSelectionStart(), showText,spanBgResId,textColor, userId);
+            generateSpan(spannableString, getSelectionStart() - showText.length(), getSelectionStart(), showText, spanBgResId, textColor, userId);
             setText(spannableString);
-            setSelection(insertPos+showText.length());
+            setSelection(insertPos + showText.length());
         }
     }
 
     private void generateSpan(Spannable spannableString, int start, int end, String showText, int spanBgResId, int textColor, String userId) {
-        View spanView = getSpanView(getContext(), showText, spanBgResId,textColor);
+        View spanView = getSpanView(getContext(), showText, spanBgResId, textColor);
         BitmapDrawable bitmapDrawable = (BitmapDrawable) convertViewToDrawable(spanView);
         bitmapDrawable.setBounds(0, 0, bitmapDrawable.getIntrinsicWidth(), bitmapDrawable.getIntrinsicHeight());
-        MyImageSpan what = new MyImageSpan(getContext(), bitmapDrawable,start,end,showText,spanBgResId,textColor, userId);
+        MyImageSpan what = new MyImageSpan(getContext(), bitmapDrawable, start, end, showText, spanBgResId, textColor, userId);
         spannableString.setSpan(what, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
     }
 
@@ -161,16 +164,16 @@ public class CustomAtEditText extends AppCompatAutoCompleteTextView {
         view.setEllipsize(TextUtils.TruncateAt.END);
         view.setSingleLine(true);
         //设置文字框背景色
-        if(spanBgResId==DEFAULT_BG){
+        if (spanBgResId == DEFAULT_BG) {
             view.setBackgroundResource(R.drawable.shape_corner_rectangle);
-        }else{
+        } else {
             view.setBackgroundResource(spanBgResId);
         }
         view.setTextSize(getTextSize());
         //设置文字颜色
-        if(spanBgResId==DEFAULT_TEXT_COLOR){
+        if (spanBgResId == DEFAULT_TEXT_COLOR) {
             view.setTextColor(Color.BLUE);
-        }else{
+        } else {
             view.setTextColor(textColor);
         }
         return view;
@@ -179,19 +182,32 @@ public class CustomAtEditText extends AppCompatAutoCompleteTextView {
     public void setInputAtListener(InputAtListener inputAtListener) {
         this.inputAtListener = inputAtListener;
     }
+
     public void setRestoreFromDraft(boolean restoreFromDraft) {
         isRestoreFromDraft = restoreFromDraft;
     }
 
-    /** 获取@模式
+    public InputTextListener getInputTextListener() {
+        return inputTextListener;
+    }
+
+    public void setInputTextListener(InputTextListener inputTextListener) {
+        this.inputTextListener = inputTextListener;
+    }
+
+    /**
+     * 获取@模式
+     *
      * @return
      */
     public boolean isOnlySupportLastAt() {
         return isOnlySupportLastAt;
     }
 
-    /** 设置@模式
-     * @param onlySupportLastAt  true 最后输入@有效；false,任何位置输入@有效
+    /**
+     * 设置@模式
+     *
+     * @param onlySupportLastAt true 最后输入@有效；false,任何位置输入@有效
      */
     public void setOnlySupportLastAt(boolean onlySupportLastAt) {
         isOnlySupportLastAt = onlySupportLastAt;
@@ -400,45 +416,53 @@ public class CustomAtEditText extends AppCompatAutoCompleteTextView {
             int end = jsonObject.getInt("end");
             int spanBgResId = jsonObject.getInt("spanBgResId");
             int textColor = jsonObject.getInt("textColor");
-            generateSpan(ss,start, end, showtext,spanBgResId,textColor, userid);
+            generateSpan(ss, start, end, showtext, spanBgResId, textColor, userid);
         }
         return ss;
     }
-
 
 
     TextWatcher defaultTextWatcher = new TextWatcher() {
 
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+            if(inputTextListener!=null){
+                inputTextListener.beforeInputTextChanged(s, start, count, after);
+            }
         }
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            if(isRestoreFromDraft){
+            if (isRestoreFromDraft) {
                 isRestoreFromDraft = false;
-            }else{
-                if(isOnlySupportLastAt){
+            } else {
+                if (isOnlySupportLastAt) {
                     if (count == 1 && start == s.length() - 1 && s.charAt(start) == '@') {   // 判断输入框内最后一位s为@时跳转
-                        if(inputAtListener !=null){
+                        if (inputAtListener != null) {
                             inputAtListener.jumpToSelectMember();
                         }
                     }
-                }else{
+                } else {
                     if (count == 1 && s.charAt(start) == '@') {  // 判断输入框内输入一位@时跳转
-                        if(inputAtListener !=null){
+                        if (inputAtListener != null) {
                             inputAtListener.jumpToSelectMember();
                         }
                     }
                 }
-
+            }
+            if(inputTextListener!=null){
+                inputTextListener.onInputTextChanged(s, start, before, count);
             }
         }
 
         @Override
         public void afterTextChanged(Editable s) {
-
+            if(inputTextListener!=null){
+                inputTextListener.afterInputTextChanged(s);
+            }
         }
     };
+
+
+
 }
