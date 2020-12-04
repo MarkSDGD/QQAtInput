@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.mark.atlibrary.CustomAtEditText
+    <com.mark.atlibrary.AtEditText
         android:layout_marginTop="30dp"
         android:id="@+id/chat_edit"
         android:layout_width="match_parent"

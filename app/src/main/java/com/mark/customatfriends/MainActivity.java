@@ -11,8 +11,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.mark.atlibrary.CustomAtEditText;
+import com.mark.atlibrary.AtEditText;
 import com.mark.atlibrary.listener.InputAtListener;
+import com.mark.atlibrary.listener.InputTextListener;
 import com.mark.customatfriends.bean.Member;
 import com.mark.atlibrary.listener.SelectMemberListener;
 import com.mark.customatfriends.utils.PreferenceUtils;
@@ -22,10 +23,10 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements InputAtListener, SelectMemberListener<Member> {
+public class MainActivity extends AppCompatActivity implements InputAtListener, InputTextListener, SelectMemberListener<Member> {
 
     public static final String WAIT_SEND = "WAIT_SEND";
-    private CustomAtEditText mChatEdit;
+    private AtEditText mChatEdit;
     private ArrayList<Member> mMembers = new ArrayList<>();
     String[] NAMES = new String[]{"李白", "杜甫", "王勃", "杨万里", "贺知章", "辛弃疾","陆游", "李清照", "白居易"};
     private SelectMemberPopupWindow mSelectMemberPopupWindow;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements InputAtListener, 
     private void initView() {
         mButton =  findViewById(R.id.button);
         mMemberIdTv =  findViewById(R.id.memberid);
-        mChatEdit = (CustomAtEditText) findViewById(R.id.chat_edit);
+        mChatEdit = (AtEditText) findViewById(R.id.chat_edit);
         mChatEdit.post(() -> {
             mChatEdit.requestFocus();
             softKeyboardControl(true,200);
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements InputAtListener, 
 
     private void initListener() {
         mChatEdit.setInputAtListener(this);
+        mChatEdit.setInputTextListener(this);
         mButton.setOnClickListener(v -> {
             mMemberIdTv.setText(mChatEdit.getUserIdString());
         });
@@ -153,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements InputAtListener, 
                     return;
                 }*/
                 dealInputCharAt(editContent);
-                mChatEdit.addSpan(atContent.toString(), CustomAtEditText.DEFAULT_BG, CustomAtEditText.DEFAULT_TEXT_COLOR, member.getId());
+                mChatEdit.addSpan(atContent.toString(), AtEditText.DEFAULT_BG, AtEditText.DEFAULT_TEXT_COLOR, member.getId());
                 softKeyboardControl(true,200);
             }
         } catch (Exception e) {
@@ -189,5 +191,20 @@ public class MainActivity extends AppCompatActivity implements InputAtListener, 
         } else {
             imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
         }
+    }
+
+    @Override
+    public void beforeInputTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onInputTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public void afterInputTextChanged(Editable s) {
+
     }
 }

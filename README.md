@@ -4,7 +4,7 @@
 
 ## 仿QQ at 功能
 
-今年项目中增加了即时通讯功能，在开发之余，封装了一个仿QQ at 功能组件。可以用在聊天，评论等模块中。该组件主要解决两个**难点问题**:
+最近在做即时通讯功能，在开发之余，封装了一个仿QQ at 功能组件。可以用在聊天，评论等模块中。该组件主要解决两个**难点问题**:
 1. `@选取的成员作为一个整体，不可编辑，支持整体删除；`
 2. `支持spannable类型存储，@内容可以保存草稿以及恢复草稿功能；`
 
@@ -29,6 +29,14 @@
 8.demo 可以限制重复@某个人，默认关闭;
 
 9.demo 可以控制键盘显示与隐藏
+
+## 2020-12-04 更新内容：  
+   
+- 1.0.3版本中，CustomAtEditText组件名称修改为AtEditText,增加了配套的AtTextView;
+
+-  内部结构进行了部分重构；
+
+ 
 
 ## demo apk下载
 
@@ -68,13 +76,13 @@ allprojects {
 ###  app目录下build.gradle文件添加依赖项
 ```
 dependencies {
-    implementation 'com.github.MarkSDGD:QQAtInput:1.0.0'
+    implementation 'com.github.MarkSDGD:QQAtInput:1.0.3'
 }
 ```
 
 ###  使用方式
 ```
-<com.mark.atlibrary.CustomAtEditText
+<com.mark.atlibrary.AtEditText
         android:layout_marginTop="30dp"
         android:id="@+id/chat_edit"
         android:layout_width="match_parent"
