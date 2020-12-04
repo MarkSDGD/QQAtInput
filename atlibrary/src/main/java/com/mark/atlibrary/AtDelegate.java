@@ -69,7 +69,7 @@ public class AtDelegate {
         return ss;
     }
 
-    void generateSpan(Spannable spannableString, int start, int end, String showText, int spanBgResId, int textColor, String userId) {
+    public void generateSpan(Spannable spannableString, int start, int end, String showText, int spanBgResId, int textColor, String userId) {
         View spanView = getSpanView(context, showText, spanBgResId, textColor);
         BitmapDrawable bitmapDrawable = (BitmapDrawable) convertViewToDrawable(spanView);
         bitmapDrawable.setBounds(0, 0, bitmapDrawable.getIntrinsicWidth(), bitmapDrawable.getIntrinsicHeight());
