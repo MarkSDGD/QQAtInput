@@ -30,13 +30,6 @@
 
 9.demo 可以控制键盘显示与隐藏
 
-## 2020-12-04 更新内容：  
-   
-- 1.0.3版本中，CustomAtEditText组件名称修改为AtEditText,增加了配套的AtTextView;
-
--  内部结构进行了部分重构;
-
- 
 
 ## demo apk下载
 
@@ -76,7 +69,7 @@ allprojects {
 ###  app目录下build.gradle文件添加依赖项
 ```
 dependencies {
-    implementation 'com.github.MarkSDGD:QQAtInput:1.0.3'
+    implementation 'com.github.MarkSDGD:QQAtInput:1.0.4'
 }
 ```
 
@@ -127,6 +120,14 @@ dependencies {
      public SpannableString jsonString2SpannableString(String strjson)
 
 ```
+
+####  设置最大span宽度
+```
+
+     mChatEdit.getAtDelegate().setMaxSpanWidth(int width);
+     
+```
+
 
 ## 实现原理
 
