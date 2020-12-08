@@ -15,7 +15,7 @@ import org.json.JSONException;
  */
 public class AtTextView extends AppCompatTextView {
 
-    private final AtDelegate atDelegate = new AtDelegate(getContext(), getTextSize());
+    private AtDelegate atDelegate = new AtDelegate(getContext(), getTextSize());
 
     public AtTextView(Context context) {
         this(context, null);
@@ -43,6 +43,10 @@ public class AtTextView extends AppCompatTextView {
      */
     public SpannableString jsonString2SpannableString(String strjson) throws JSONException {
         return atDelegate.jsonString2SpannableString(strjson);
+    }
+
+    public AtDelegate getAtDelegate() {
+        return atDelegate;
     }
 
 }

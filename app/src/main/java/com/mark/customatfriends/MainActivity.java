@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements InputAtListener, 
     public static final String WAIT_SEND = "WAIT_SEND";
     private AtEditText mChatEdit;
     private ArrayList<Member> mMembers = new ArrayList<>();
-    String[] NAMES = new String[]{"李白", "杜甫", "王勃", "杨万里", "贺知章", "辛弃疾","陆游", "李清照", "白居易"};
+    String[] NAMES = new String[]{"李白", "杜甫", "王勃", "杨万里杨万里杨万里杨万里杨万里", "贺知章", "辛弃疾","陆游", "李清照", "白居易"};
     private SelectMemberPopupWindow mSelectMemberPopupWindow;
     private Button mButton;
     private TextView mMemberIdTv;
@@ -154,6 +154,7 @@ public class MainActivity extends AppCompatActivity implements InputAtListener, 
                     Toast.makeText(MainActivity.this, "已经@了", Toast.LENGTH_SHORT).show();
                     return;
                 }*/
+                mChatEdit.getAtDelegate().setMaxSpanWidth(800);
                 dealInputCharAt(editContent);
                 mChatEdit.addSpan(atContent.toString(), AtEditText.DEFAULT_BG, AtEditText.DEFAULT_TEXT_COLOR, member.getId());
                 softKeyboardControl(true,200);

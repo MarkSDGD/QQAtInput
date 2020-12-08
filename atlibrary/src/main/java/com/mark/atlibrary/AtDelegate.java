@@ -22,6 +22,7 @@ public class AtDelegate {
     public static final int DEFAULT_TEXT_COLOR = 0;
     Context context;
     float textSize;
+    int maxSpanWidth;
     public AtDelegate(Context context, float textSize) {
         this.context=context;
         this.textSize=textSize;
@@ -110,7 +111,13 @@ public class AtDelegate {
      */
     public View getSpanView(Context context, String text, int spanBgResId, int textColor) {
         TextView view = new TextView(context);
-        //view.setMaxWidth(maxWidth);
+
+        if(getMaxSpanWidth()>0){
+            view.setMaxWidth(getMaxSpanWidth());
+        }else{
+
+        }
+
         view.setText(text);
         view.setEllipsize(TextUtils.TruncateAt.END);
         view.setSingleLine(true);
@@ -150,5 +157,13 @@ public class AtDelegate {
             builder.deleteCharAt(builder.length() - 1);
         }
         return builder.toString();
+    }
+
+    public int getMaxSpanWidth() {
+        return maxSpanWidth;
+    }
+
+    public void setMaxSpanWidth(int maxSpanWidth) {
+        this.maxSpanWidth = maxSpanWidth;
     }
 }

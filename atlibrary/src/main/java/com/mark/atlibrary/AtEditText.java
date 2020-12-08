@@ -25,9 +25,8 @@ public class AtEditText extends AppCompatAutoCompleteTextView {
     private InputAtListener inputAtListener;
     private InputTextListener inputTextListener;
     private boolean isRestoreFromDraft = false;
-
     private boolean isOnlySupportLastAt = false;
-    private final AtDelegate atDelegate = new AtDelegate(getContext(),getTextSize());
+    private AtDelegate atDelegate = new AtDelegate(getContext(),getTextSize());
     /**
      * Instantiates a new Custom at edit text.
      *
@@ -212,6 +211,9 @@ public class AtEditText extends AppCompatAutoCompleteTextView {
         }
     };
 
+    public AtDelegate getAtDelegate() {
+        return atDelegate;
+    }
 
 
 }
