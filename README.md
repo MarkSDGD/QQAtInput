@@ -69,7 +69,7 @@ allprojects {
 ###  app目录下build.gradle文件添加依赖项
 ```
 dependencies {
-    implementation 'com.github.MarkSDGD:QQAtInput:1.0.5'
+    implementation 'com.github.MarkSDGD:QQAtInput:1.1.0'
 }
 ```
 
