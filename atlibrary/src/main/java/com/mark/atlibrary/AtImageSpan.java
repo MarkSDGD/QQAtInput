@@ -21,7 +21,7 @@ public class AtImageSpan extends DynamicDrawableSpan {
     private int end;
     private int spanBgResId;
     private int textColor;
-
+    private int maxEms;
     /**
      * Instantiates a new My image span.
      *
@@ -34,7 +34,7 @@ public class AtImageSpan extends DynamicDrawableSpan {
      * @param textColor   the text color
      * @param userId      the user id
      */
-    public AtImageSpan(Context context, Drawable mDrawable, int start, int end, String showText, int spanBgResId, int textColor, String userId) {
+    public AtImageSpan(Context context, Drawable mDrawable, int start, int end, String showText, int spanBgResId, int textColor, String userId,int maxEms) {
         this.mContext = context;
         this.mDrawable = mDrawable;
         this.start = start;
@@ -43,6 +43,7 @@ public class AtImageSpan extends DynamicDrawableSpan {
         this.userId = userId;
         this.spanBgResId = spanBgResId;
         this.textColor = textColor;
+        this.maxEms = maxEms;
     }
 
     /**
@@ -99,6 +100,10 @@ public class AtImageSpan extends DynamicDrawableSpan {
         return textColor;
     }
 
+    public int getMaxEms() {
+        return maxEms;
+    }
+
     @Override
     public Drawable getDrawable() {
         return mDrawable;
@@ -138,4 +143,8 @@ public class AtImageSpan extends DynamicDrawableSpan {
         b.draw(canvas);
         canvas.restore();
     }
+
+
+
+
 }

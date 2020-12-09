@@ -22,7 +22,6 @@ public class AtDelegate {
     public static final int DEFAULT_TEXT_COLOR = 0;
     Context context;
     float textSize;
-    int maxSpanWidth;
     public AtDelegate(Context context, float textSize) {
         this.context=context;
         this.textSize=textSize;
@@ -40,6 +39,7 @@ public class AtDelegate {
             int end = ss.getSpanEnd(spans[i]);
             int spanBgResId = spans[i].getSpanBgResId();
             int textColor = spans[i].getTextColor();
+            int maxEms = spans[i].getMaxEms();
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("start", start);
             jsonObject.put("end", end);
@@ -47,6 +47,7 @@ public class AtDelegate {
             jsonObject.put("userid", userid);
             jsonObject.put("spanBgResId", spanBgResId);
             jsonObject.put("textColor", textColor);
+            jsonObject.put("maxEms", maxEms);
             jsonArray.put(jsonObject);
         }
         json.put("spans", jsonArray);
@@ -65,16 +66,17 @@ public class AtDelegate {
             int end = jsonObject.getInt("end");
             int spanBgResId = jsonObject.getInt("spanBgResId");
             int textColor = jsonObject.getInt("textColor");
-            generateSpan(ss, start, end, showtext, spanBgResId, textColor, userid);
+            int maxEms = jsonObject.getInt("maxEms");
+            generateSpan(ss, start, end, showtext, spanBgResId, textColor, userid,maxEms);
         }
         return ss;
     }
 
-    public void generateSpan(Spannable spannableString, int start, int end, String showText, int spanBgResId, int textColor, String userId) {
-        View spanView = getSpanView(context, showText, spanBgResId, textColor);
+    public void generateSpan(Spannable spannableString, int start, int end, String showText, int spanBgResId, int textColor, String userId,int maxEms) {
+        View spanView = getSpanView(context, showText, spanBgResId, textColor,maxEms);
         BitmapDrawable bitmapDrawable = (BitmapDrawable) convertViewToDrawable(spanView);
         bitmapDrawable.setBounds(0, 0, bitmapDrawable.getIntrinsicWidth(), bitmapDrawable.getIntrinsicHeight());
-        AtImageSpan what = new AtImageSpan(context, bitmapDrawable, start, end, showText, spanBgResId, textColor, userId);
+        AtImageSpan what = new AtImageSpan(context, bitmapDrawable, start, end, showText, spanBgResId, textColor, userId,maxEms);
         spannableString.setSpan(what, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
     }
 
@@ -109,11 +111,11 @@ public class AtDelegate {
      * @param textColor   the text color
      * @return the span view
      */
-    public View getSpanView(Context context, String text, int spanBgResId, int textColor) {
+    public View getSpanView(Context context, String text, int spanBgResId, int textColor,int maxEms) {
         TextView view = new TextView(context);
 
-        if(getMaxSpanWidth()>0){
-            view.setMaxWidth(getMaxSpanWidth());
+        if(maxEms>0){
+            view.setMaxEms(maxEms);
         }else{
 
         }
@@ -157,13 +159,5 @@ public class AtDelegate {
             builder.deleteCharAt(builder.length() - 1);
         }
         return builder.toString();
-    }
-
-    public int getMaxSpanWidth() {
-        return maxSpanWidth;
-    }
-
-    public void setMaxSpanWidth(int maxSpanWidth) {
-        this.maxSpanWidth = maxSpanWidth;
     }
 }

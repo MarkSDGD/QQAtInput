@@ -86,18 +86,18 @@ public class AtEditText extends AppCompatAutoCompleteTextView {
      * @param textColor   span块文字颜色
      * @param userId      span块对应的成员id
      */
-    public void addSpan(String showText, int spanBgResId, int textColor, String userId) {
+    public void addSpan(String showText, int spanBgResId, int textColor, String userId,int maxEms) {
         if (isOnlySupportLastAt) {
             getText().append(showText);
             SpannableString spannableString = new SpannableString(getText());
-            atDelegate.generateSpan(spannableString, spannableString.length() - showText.length(), spannableString.length(), showText, spanBgResId, textColor, userId);
+            atDelegate.generateSpan(spannableString, spannableString.length() - showText.length(), spannableString.length(), showText, spanBgResId, textColor, userId,maxEms);
             setText(spannableString);
             setSelection(spannableString.length());
         } else {
             int insertPos = getSelectionStart();
             getText().insert(getSelectionStart(), showText);
             SpannableString spannableString = new SpannableString(getText());
-            atDelegate.generateSpan(spannableString, getSelectionStart() - showText.length(), getSelectionStart(), showText, spanBgResId, textColor, userId);
+            atDelegate.generateSpan(spannableString, getSelectionStart() - showText.length(), getSelectionStart(), showText, spanBgResId, textColor, userId,maxEms);
             setText(spannableString);
             setSelection(insertPos + showText.length());
         }

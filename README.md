@@ -69,7 +69,7 @@ allprojects {
 ###  app目录下build.gradle文件添加依赖项
 ```
 dependencies {
-    implementation 'com.github.MarkSDGD:QQAtInput:1.0.4'
+    implementation 'com.github.MarkSDGD:QQAtInput:1.0.5'
 }
 ```
 
@@ -101,7 +101,7 @@ dependencies {
 ####  添加一个@块
 ```
 
-     public void addSpan(String showText, int spanBgResId, int textColor, String userId)
+     public void addSpan(String showText, int spanBgResId, int textColor, String userId,int maxEms)
 
 ```
 
@@ -121,12 +121,6 @@ dependencies {
 
 ```
 
-####  设置最大span宽度
-```
-
-     mChatEdit.getAtDelegate().setMaxSpanWidth(int width);
-     
-```
 
 
 ## 实现原理
